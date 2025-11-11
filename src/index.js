@@ -12,7 +12,7 @@ root.render(
       <li>Laxmi Roshini</li>
       <li>Pavithra</li>
       <li>Jesintha</li>
-      <li>Shenbagam</li>
+      <li>AmruthaBala</li>
       <li>Prem Kumar</li>
       <li>Marimuthu</li>
       <li>Shreepal</li>
