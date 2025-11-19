@@ -1,0 +1,40 @@
+body{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTerKQZ7qPDgLKf4uXLMlbDZXjnSFOtTBmHvg&s');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.login-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 300px;
+}
+
+.login-input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+.login-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 6px;
+}
