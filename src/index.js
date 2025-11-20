@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Conditon from './react/react-condition/Condition';
-import Calculation from './react/react-data-Binding/Calculation';
-import Helloworld from './react/react-jsx/Helloworld';
-import Looping from './react/react-loop/Looping';
+import SearchBar from './Searchbar-task/SearchBar';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+ feature/shreepal_task/searchbar-task
+    <SearchBar/>
+
     <Conditon/>
     <Calculation/>
     <Helloworld/>
     <Looping/>
 
+ task/sreepal
 
 
 
