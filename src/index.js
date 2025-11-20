@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
 import SearchBar from './Searchbar-task/SearchBar';
 
 
@@ -8,7 +7,15 @@ import SearchBar from './Searchbar-task/SearchBar';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+ feature/shreepal_task/searchbar-task
     <SearchBar/>
+
+    <Conditon/>
+    <Calculation/>
+    <Helloworld/>
+    <Looping/>
+
+ task/sreepal
 
 
 
