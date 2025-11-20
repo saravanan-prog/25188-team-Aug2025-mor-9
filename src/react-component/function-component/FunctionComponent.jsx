@@ -5,7 +5,7 @@ export default function FunctionComponent() {
         <div className="base-container">
             <h1> Employee Management System</h1>
 
-            <table border="1" cellPadding="8" cellSpacing="0" style={{ marginTop: "20px", width: "100%", textAlign: "center" }}>
+            <table border={1} cellPadding={8} cellSpacing={0} style={{ marginTop: "20px", width: "100%", textAlign: "center" }}>
                 <thead style={{ backgroundColor: "#f0f0f0" }}>
                     <tr>
                         <th>Employee ID</th>
