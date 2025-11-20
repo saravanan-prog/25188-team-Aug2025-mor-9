@@ -23,7 +23,7 @@ export default class ConstructorImplement extends Component {
                     <h2>School Management - Student List</h2>
                 </div>
 
-                <table border="1" cellPadding="8" cellSpacing="0" style={{ marginTop: "20px", width: "100%", textAlign: "center" }}>
+                <table border={1} cellPadding={8} cellSpacing={0} style={{ marginTop: "20px", width: "100%", textAlign: "center" }}>
                     <thead style={{ backgroundColor: "#f0f0f0" }}>
                         <tr>
                             <th>ID</th>
