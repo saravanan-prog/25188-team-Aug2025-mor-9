@@ -1,0 +1,25 @@
+.baseContainer {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.galleryHeading h1 {
+  color: white;
+  background-color: darkgreen;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.body {
+  background-color: #f0e68c;
+  padding: 20px;
+  color: #333;
+  border-radius: 4px;
+}
+
+.bodyContent {
+  font-size: 1rem;
+  line-height: 1.5;
+}
