@@ -21,25 +21,25 @@ export default function Product() {
       image: "https://cdn.moglix.com/p/guKmMei2bWKDM-large.jpg"
     }
   ];
-   
+    const selectedProduct = headphones.find((item) => item.id === 3);
   return (
     <div className="product-list">
 
-      {headphones.map((item) => (
-        <div className="product-card" key={item.id}>
+      {selectedproduct && (
+        <div className="product-card" key={selectedproduct.id}>
           
           <div className="product-image">
-            <img src={item.image} alt={item.name} />
+            <img src={selectedproduct.image} alt={selectedproduct.name} />
           </div>
 
           <div className="product-info">
-            <h2 className="product-name">{item.name}</h2>
-            <p className="product-price">{item.price}</p>
+            <h2 className="product-name">{selectedproduct.name}</h2>
+            <p className="product-price">{selectedproduct.price}</p>
             <button className="add-cart-btn">Add to Cart</button>
           </div>
 
         </div>
-      ))}
+      )}
 
     </div>
   );
