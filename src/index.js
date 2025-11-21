@@ -1,26 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Contact from './Pages/react-module-css/Contact/Contact';
+import AboutPage from './Pages/ReactCSS/About/about';
+import Buttonreact from './Pages/Reactbootstrap/Button/Buttonreact';
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <h4>FSD-RJS SARAVANAN BATCH</h4>
-    <ol>
-      <li>Laxmi Roshini</li>
-      <li>Pavithra</li>
-      <li>Jesintha</li>
-      <li>Shenbagam</li>
-      <li>Prem Kumar</li>
-      <li>Marimuthu</li>
-      <li>Shreepal</li>
-    </ol>
+    <Contact/>
+    <AboutPage/>
+    <Buttonreact/>
   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
