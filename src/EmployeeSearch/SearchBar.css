@@ -1,0 +1,31 @@
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.search-box {
+  padding: 8px;
+  width: 250px;
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+.search-btn, .clear-btn{
+  padding: 8px 12px;
+  margin-right: 18px;
+}
+
+.emp-table {
+  width: 100%;
+  border-collapse: collapse; 
+}
+
+.emp-table, .emp-table th, .emp-table td {
+  border: 1px solid black; 
+  margin-top: 80px;
+}
+
+.emp-table th, .emp-table td {
+  padding: 8px; 
+  text-align: center;
+}
