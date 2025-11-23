@@ -1,18 +1,17 @@
 import React from 'react';
-import Welcome from './React_pages/React-jsx/Welcome';
 import ReactDOM from 'react-dom/client';
-import Looping from './React_pages/React-loop/Looping';
-import Calculation from './React_pages/React-data-Binding/Calculation';
-import Conditon from './React_pages/react-conditions/Condition';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+
+import SearchBox from './SearchBox';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Welcome/>
-    <Looping/>
-    <Calculation/>
-    <Conditon/>
+    <SearchBox/>
   </React.StrictMode>
 );
 
