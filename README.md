@@ -1,101 +1,59 @@
-React Forms
-=============
-
-      - Basic Forms
-
-      - Custom Field Forms
-      
-      - Interact to backed [ api call ]
-
-      - Form with Validation
-
-             - Formik Libirary
-             - Yup validation 
-
-                  (or)
-
-                  useForm() 
+React Hooks :-
+==============
+      1. useState   -> State management
+      2. useEffect  -> React Life cycle function
+      3. useReducer -> State management reduce complex logic.
+      4. useContext -> Global Statement Magement.
+      5. useRef     -> Element Reference.
+      6. useCallback -> Prevent callback 
+      7. useMemo     -> Memoization issue.
 
 
-     
+      Router:
+            1. useParam -> to get Url paramater
+            2. useNavigate -> to navigate page
+            3. useLocation 
 
-Formik
+
+      Redux
+            1. useDispatch
+            2. useSelector
+
+
+
+
+useReducer 
+==========
+
+
+           => useReducer is a React Hook used for state management when:
+
+           =>  Your state logic is complex
+
+           => Updating state depends on the previous state
+
+           => You want a Redux-like reducer pattern (action → reducer → new state)
+
+           =>  It’s an alternative to useState.
+
+
+
+
+Syntax
+======
+
+      const [state, dispatch] = useReducer(reducerfn, initialState);
+
+
+            state – the current state value
+
+            dispatch(action) – sends an action to the reducerfn
+
+            reducerfn(state, action) – a function that returns the new state
+
+            initialState – the starting state
+
+
+
+Example
 =======
-        - Formik is a React form libirary.
-        - Easy form state management
-        - Built-in validation (Yup integration is common)
-        - Convenient form submission handling
-        - Minimal boilerplate compared to managing everything manually with useState
-
-    Step 1 :   Installation:
-
-             npm i formik --save
-
-
-    Step 2 :
-
-            import { Formik } from 'formik';
-      
-     Step 3 :
-
-            <Formik
-                    initialValues={ {} }
-                    validationSchema={ {} }
-                    onSubmit={()=>{
-                        
-                    }}
-                >
-
-            </Formik>
-
-
-Yup Validation
-===============
-      - Yup is a validation Libirary.
-
-            Step 1 :   Installation
-
-                        npm install yup --save
-
-            Step 2  :  
-                        import * as Yup from 'yup';
-      
-        
-
-       String:
-       -------
-            Yup.string()
-               .required("Required")
-               .min(3,"error message")
-               .max(20,"error message")
-               .email("Invalid email")
-               .matches( pattern, "Error message" )
-               .oneOf([Yup.ref("reference_field"), null], "Passwords must match"),
-
-
-      Number
-      ------
-            Yup.number()
-               .required("error message")
-               .min(1, "error message")
-               .max(100, "error message")
-
-
-      Boolean
-      -------
-            Yup.boolean().oneOf([true], "You must accept")
-      
-
-      Select Box
-      ---------
-            Yup.string().required("Please select an option")
-
-
-
-
-
-
-
-
-
-  

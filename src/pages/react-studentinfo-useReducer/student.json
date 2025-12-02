@@ -1,0 +1,17 @@
+[
+    {
+        "studentId": 1,
+        "studentName":"saravanan",
+        "address" : "chennai"
+    },
+    {
+        "studentId": 2,
+        "studentName":"pavithra",
+        "address" : "Banglore"
+    },
+    {
+        "studentId": 3,
+        "studentName":"jesinitha",
+        "address" : "Hyderabad"
+    }
+]
