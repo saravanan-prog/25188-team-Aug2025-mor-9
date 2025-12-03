@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css';
+import DashboardPage from './Pages/Dashboard/DashboardPage';
 
 
 
@@ -10,7 +11,7 @@ root.render(
   <React.StrictMode>
       
      
-     
+    <DashboardPage />
       
      
 

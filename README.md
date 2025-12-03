@@ -1,5 +1,5 @@
-                              React Context API — Explained Simply
-                              =====================================
+                              React Context API (useContext) — Explained Simply 
+                              =================================================
 Before:
 
       Props Drilling
@@ -9,7 +9,7 @@ Before:
 
             Example 1:
 
-                  App
+                  App  
                   └─ A (needs to pass the data)
                         └─ B (doesn't need the data)
                               └─ C (doesn't need the data)
@@ -40,8 +40,8 @@ Before:
                   App
                   └─ Parent (receives user)
                         └─ Child (passes user)
-                        └─ GrandChild (passes user)
-                              └─ TargetComponent (finally uses user)
+                              └─ GrandChild (passes user)
+                                    └─ TargetComponent (finally uses user)
 
 
 Context API
