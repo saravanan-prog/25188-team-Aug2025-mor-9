@@ -26,15 +26,10 @@ Props Drilling
 ==============
       Passing props through multiple components just to reach a deeply nested component.
 
-       Parent Component            ------
-                                         | State - 1
-                                         | State - 2
-                                         | State - 3
-                                         V
-               ChildComponent      ------
-                                         |  State - 1
-                                         V
-                       child      -------
+            App
+            └── Parent
+                  └── Child
+                        └── GrandChild 
 
 
 Example :
