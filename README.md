@@ -1,40 +1,74 @@
-React Memoization
-=================
+React Hook use Callback
+=======================
 
 Defination:
+-----------
 
-      It improves performance by preventing unnecessary re-renders.
-
-
-Simple Term:-
+      useCallback is a tool in React that “remembers a function” so that React doesn’t create a new one every time the page updates.
 
 
-       =>     Imagine you have a child component:
-
-       =>     Parent re-renders
-
-       =>     Child also re-renders (even if nothing changed)
-
-       =>     Memoization stops this.
 
 
-      Memoization in React means caching the result of a computation or component rendering so React doesn’t redo work unnecessarily.
+      Imagine this scenario:
+      ----------------------
 
-    
+            You have a parent component and a child component
 
+            Parent updates → React runs all code again
 
-    Example
-    =======
+            If you pass a new function to the child → child also updates even if it didn’t need to
+
       
-      import {React,memo} from "react";
+      Solution :
+      ---------
 
-      export default memo(
-            
-            function ChildComponent(){
-                  return <h1> I am a child Component </h1>
+            useCallback stops the child from updating unnecessarily by keeping the function the same.
+
+
+
+Example
+========
+      Parent Component
+      =================
+            import React, { useState, useCallback } from "react";
+
+
+            export default function App() {
+
+                  const [count, setCount] = useState(0);
+
+                  /* This function is "memorized" with useCallback */
+
+                  const handleClick = useCallback(() => {
+
+                        console.log("Button clicked!");
+
+                  }, []); // empty array = no dependency changes
+
+                  return (
+
+                        <div>
+                              <h1>Count: {count}</h1>
+                              <button onClick={() => setCount(count + 1)}>Increase Count</button>
+                              <Child onClick={handleClick} />
+                        </div>
+                  );
             }
-      )
 
+
+      Child Component
+      ===============
+
+            
+           export default memo(
+            
+                  funciton Child({ handleClick }) => {
+
+                        console.log("Child rendered");
+                        return <button onClick={ handleClick }>Click Me</button>;
+
+                  }
+            );
 
 
 
