@@ -44,7 +44,7 @@ Before:
                                     └─ TargetComponent (finally uses user)
 
 
-Context API
+Context API -  [ Global State mangement ]
 ===========
 
       The Context API lets you share data across your component tree without needing to pass props down manually at every level (“prop drilling”).
