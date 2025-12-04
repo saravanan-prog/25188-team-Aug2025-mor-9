@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+1. What is React ? 
+===================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+     => React is a JavaScript library used to build user interfaces (UI), 
+     =>  mainly for websites and web applications.
+     => It helps developers create:
+            
+            Fast websites
+            Interactive pages
+            Reusable components
+      
+      => Key Features:
 
-## Available Scripts
+            Components        → small pieces of UI
+            JSX               → write HTML inside JavaScript
+            State             → data that changes
+            Virtual DOM       → faster page updates
+            Hooks             → useState, useEffect, useCallback, etc.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Why is React popular?
+==========================
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+      ✔ Fast
+      ✔ Easy to use
+      ✔ Reusable components
+      ✔ Huge community
+      ✔ Used by companies like Facebook, Instagram, Netflix, etc.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Virtual DOM ?
+================
 
-### `npm run build`
+      React uses a virtual copy of the browser DOM to update UI faster.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+            ✔ Only changes what is needed
+            ✔ Improves performance
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. What is Babel ?
+==================
 
-### `npm run eject`
+      => Babel is a JavaScript compiler that converts modern JavaScript code into older JavaScript 
+         so it works on all browsers.
+      
+      => Modern JavaScript (ES6+) has new features like:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+            let/const
+            arrow functions
+            classes
+            async/await
+            imports/exports
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+            BUT…
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+             Older browsers (like Internet Explorer or old Chrome versions) don’t understand these features.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+      In simple Term:
 
-## Learn More
+            👉 Babel converts new JS → old JS that all browsers can run.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. What is Webpack?
+====================
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+     => Webpack is a module bundler. 
+     => It takes all your files (JavaScript, CSS, images, HTML, etc.) and bundles them into one or more optimized files for the browser.
 
-### Code Splitting
+     => In simple terms:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+            A modern web app has many files:
 
-### Analyzing the Bundle Size
+                  JavaScript files
+                  CSS files
+                  Images
+                  Components
+                  External libraries
+                  Browsers can’t handle so many separate files efficiently.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+            Webpack helps by:
 
-### Making a Progressive Web App
+                  ✔ Combining files
+                  ✔ Reducing file size
+                  ✔ Converting code (Babel + loaders)
+                  ✔ Managing dependencies
+                  ✔ Improving performance
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+      
