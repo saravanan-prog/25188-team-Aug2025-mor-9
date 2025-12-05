@@ -26,6 +26,8 @@ Before useMemo
       export default function Calculation(){
 
             const [count,setCount] = useState(0)
+
+
             const result  = sumofCalculation(count) 
       
 
@@ -64,6 +66,7 @@ import { useState ,useMemo} from "react"
 export function Calculation(){
 
     const [count,setCount] = useState(0)
+    const [author,setAuthor] = useState("Saravanan")
     
     const result  = useMemo(() => sumofCalculation(count) , [count])
 
@@ -72,12 +75,15 @@ export function Calculation(){
               <p className="h1"> Use Memo Example - Calculation Program </p>
           </div>
           <div className="counter">
-
              <p>count : {count} </p>
-              <button onClick={()=>setCount(count + 1)}> ADD count</button>
-
+             <button onClick={()=>setCount(count + 1)}> ADD count</button>
              <p>result : {result} </p>
           </div>
+
+          <div className="developedby">
+            <p> {author} </p>
+             <button onClick={()=>setAuthor("pavithra")}> change author </button>
+          </div
     </div>
 }
 
