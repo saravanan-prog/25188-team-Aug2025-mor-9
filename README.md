@@ -1,77 +1,91 @@
-React Hook use Callback
-=======================
+React Hook - useMemo
+====================
+     useMemo tells React:
 
-Defination:
------------
-
-      useCallback is a tool in React that “remembers a function” so that React doesn’t create a new one every time the page updates.
-
+     =>  “Remember the result of this calculation so you don’t have to do it again unless something changes.”
+     =>  It helps your app run faster by not repeating work that doesn’t need to be repeated.
 
 
-
-      Imagine this scenario:
-      ----------------------
-
-            You have a parent component and a child component
-
-            Parent updates → React runs all code again
-
-            If you pass a new function to the child → child also updates even if it didn’t need to
-
+Example (simple)
+------------------
+      Without useMemo:
+            => You do a big calculation every time the component renders — even if nothing changed.
       
-      Solution :
-      ---------
-
-            useCallback stops the child from updating unnecessarily by keeping the function the same.
-
-
-
-Example
-========
-      Parent Component
-      =================
-            import React, { useState, useCallback } from "react";
-
-
-            export default function App() {
-
-                  const [count, setCount] = useState(0);
-
-                  /* This function is "memorized" with useCallback */
-
-                  const handleClick = useCallback(() => {
-
-                        console.log("Button clicked!");
-
-                  }, []); // empty array = no dependency changes
-
-                  return (
-
-                        <div>
-                              <h1>Count: {count}</h1>
-                              <button onClick={() => setCount(count + 1)}>Increase Count</button>
-                              <Child onClick={handleClick} />
-                        </div>
-                  );
-            }
-
-
-      Child Component
-      ===============
-
-            
-           export default memo(
-            
-                  funciton Child({ handleClick }) => {
-
-                        console.log("Child rendered");
-                        return <button onClick={ handleClick }>Click Me</button>;
-
-                  }
-            );
+      With useMemo:
+            => React saves the result and only re-calculates when needed.
+            => In one sentence
+                “Don’t redo this calculation unless the inputs change.”
 
 
 
+Before useMemo
+==============
 
+      import { useState ,useMemo} from "react"
 
+      export default function Calculation(){
+
+            const [count,setCount] = useState(0)
+            const result  = sumofCalculation(count) 
       
+
+            return <div>
+                  <div className="heading">
+                        <p className="h1"> Use Memo Example - Calculation Program </p>
+                  </div>
+                  <div className="counter">
+                        <p>count : {count} </p>
+                        <button onClick={()=>setCount(count + 1)}> ADD count</button>
+                        <p>result : {result} </p>
+                  </div>
+            </div>
+      }
+
+const sumofCalculation = (num) => {
+   
+    for(let i=0; i<1000000000; i++)
+        num += 1 
+
+
+    return num
+}
+
+
+
+
+
+
+After useMemo
+=============
+
+
+import { useState ,useMemo} from "react"
+
+export function Calculation(){
+
+    const [count,setCount] = useState(0)
+    
+    const result  = useMemo(() => sumofCalculation(count) , [count])
+
+    return <div>
+          <div className="heading">
+              <p className="h1"> Use Memo Example - Calculation Program </p>
+          </div>
+          <div className="counter">
+
+             <p>count : {count} </p>
+              <button onClick={()=>setCount(count + 1)}> ADD count</button>
+
+             <p>result : {result} </p>
+          </div>
+    </div>
+}
+
+const sumofCalculation = (num) => {
+   
+    for(let i=0; i<1000000000; i++)
+        num += 1 
+
+
+    return num
+}
