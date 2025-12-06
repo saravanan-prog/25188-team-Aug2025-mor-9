@@ -31,14 +31,14 @@ export default function ExampleFormikValidation() {
   return (
     <div className="container">
       <div className="heading">
-        <p className="h1 text-center text-primary">Example Formik</p>
+        <p className="h1 text-center text-primary">Example Register Form using Formik</p>
       </div>
       <div className="form-render">
         <Formik
           initialValues={initalValue}
           validationSchema={validationSchema}
-          onSubmit={(values) => {
-            console.log("Values====>", values);
+          onSubmit={(formValues) => {
+            console.log("formValues====>", formValues);
             //api-code
           }}
         >

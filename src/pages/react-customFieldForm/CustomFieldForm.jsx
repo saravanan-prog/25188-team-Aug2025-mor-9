@@ -60,7 +60,9 @@ export default function CustomFieldForm() {
                 return (
                   <Fragment>
                     {value.fieldDisabled != true &&
-                        <label for={value.fieldID}> {value.fieldLabel} </label> }
+
+                      <label for={value.fieldID}> {value.fieldLabel} </label> 
+                    }
                     
                     
                     {value.fieldType == "textarea" && value.fieldDisabled != true ? (
@@ -89,7 +91,7 @@ export default function CustomFieldForm() {
                      value.fieldDisabled != true &&
 
                       <input
-                        type={value.fieldType}  // text, file, email, password, number, 
+                        type={value.fieldType}  // text, file, email, password, number date, calender, checkbox,radio 
                         name={value.fieldName}
                         className={value.fieldClassName}
                         onChange={handleChange}

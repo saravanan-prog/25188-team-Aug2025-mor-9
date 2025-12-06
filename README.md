@@ -49,6 +49,14 @@ Formik
             </Formik>
 
 
+Libiraries - Components
+-----------------------
+      1. Formik component-> Base Container of formik.with props initialvalue,validationschema,onsubmit
+      2. Form  component  -> Form Container is establish form actions
+      3. Field  component -> field component is project the fields
+      4. ErrorMessage component -> shows the error message
+
+
 Yup Validation
 ===============
       - Yup is a validation Libirary.
@@ -98,4 +106,41 @@ Yup Validation
 
 
 
-  
+Comparission old code and new code
+=================================
+
+Old code
+--------
+
+<form>
+    <div className="form-group">
+        <label> username</label>
+        <input type = "text" name="username" id="username" onChange={handleChange}/>
+    </div>
+</form>
+
+
+New Code
+--------
+
+<Formik
+    initialState = {}
+    validateSchema = {}
+    onSubmit = {
+        (values) => {
+            console.log("values===>",values)
+        }
+    }
+
+>
+
+
+     <Form>
+        <div className="form-group">
+            <label> username</label>
+            <Field type="text" name="username" className="form-control" />
+            <ErrorMessage component = "div" name="username"/>
+        </div>
+    </Form>
+
+</Formik>

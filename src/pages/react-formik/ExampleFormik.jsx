@@ -1,6 +1,5 @@
 
 import { ErrorMessage, Field, Form, Formik } from "formik"
-import * as Yup from 'yup'
 
 
 export default function ExampleFormik(){
@@ -14,14 +13,15 @@ export default function ExampleFormik(){
             <div className="form-render">
 
                 <Formik
-                    initialValues={ 
+                    initialValues={
                         {
-                            username:"",
-                            password:""
-                        } 
+                            username:"saravanan",
+                            password:"Test@123",
+                            confirmPassowrd:"Test@123"
+                        }
                     }
 
-                    // validationSchema={ {} }
+                    //validationSchema={{}}
 
                     onSubmit={(values)=>{
                         console.log("Values====>",values)
@@ -41,6 +41,12 @@ export default function ExampleFormik(){
                             <label htmlFor="password">Password</label>
                             <Field type = "password" name="password" id="password" className="form-control"/>
                             <ErrorMessage name= "password" component="div" />
+                       </div>
+
+                       <div className="form-group">
+                            <label htmlFor="password">Confirm Password</label>
+                            <Field type = "password" name="confirmPassowrd" id="confirmPassowrd" className="form-control"/>
+                            <ErrorMessage name= "confirmPassowrd" component="div" />
                        </div>
 
                        <div className="form-group">
