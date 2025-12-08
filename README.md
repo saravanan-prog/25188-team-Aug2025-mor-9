@@ -1,97 +1,65 @@
-React Hook - useMemo
-====================
-     useMemo tells React:
+React Custom Hook
+=================
 
-     =>  “Remember the result of this calculation so you don’t have to do it again unless something changes.”
-     =>  It helps your app run faster by not repeating work that doesn’t need to be repeated.
+    A Custom Hook is just a function that:
 
-
-Example (simple)
-------------------
-      Without useMemo:
-            => You do a big calculation every time the component renders — even if nothing changed.
-      
-      With useMemo:
-            => React saves the result and only re-calculates when needed.
-            => In one sentence
-                “Don’t redo this calculation unless the inputs change.”
+        ✔ starts with the word use
+        ✔ contains React hooks inside it
+        ✔ helps you reuse code in many components
 
 
+Why do we use Custom Hooks?
+--------------------------
+    Imagine you write the same code in 3 components.
 
-Before useMemo
-==============
+    Example:
 
-      import { useState ,useMemo} from "react"
+        Fetching data
+        Handling a counter
+        Form handling
 
-      export default function Calculation(){
+            Instead of repeating the same code,
+            you write it once inside a custom hook
+            and use it everywhere.
 
-            const [count,setCount] = useState(0)
+        This makes your code clean, short, and easy.
 
-
-            const result  = sumofCalculation(count) 
-      
-
-            return <div>
-                  <div className="heading">
-                        <p className="h1"> Use Memo Example - Calculation Program </p>
-                  </div>
-                  <div className="counter">
-                        <p>count : {count} </p>
-                        <button onClick={()=>setCount(count + 1)}> ADD count</button>
-                        <p>result : {result} </p>
-                  </div>
-            </div>
-      }
-
-const sumofCalculation = (num) => {
-   
-    for(let i=0; i<1000000000; i++)
-        num += 1 
-
-
-    return num
-}
-
-
-
-
-
-
-After useMemo
-=============
-
-
-import { useState ,useMemo} from "react"
-
-export function Calculation(){
-
-    const [count,setCount] = useState(0)
-    const [author,setAuthor] = useState("Saravanan")
     
-    const result  = useMemo(() => sumofCalculation(count) , [count])
 
-    return <div>
-          <div className="heading">
-              <p className="h1"> Use Memo Example - Calculation Program </p>
-          </div>
-          <div className="counter">
-             <p>count : {count} </p>
-             <button onClick={()=>setCount(count + 1)}> ADD count</button>
-             <p>result : {result} </p>
-          </div>
+Example
+========
 
-          <div className="developedby">
-            <p> {author} </p>
-             <button onClick={()=>setAuthor("pavithra")}> change author </button>
-          </div
-    </div>
+Create the hook
+------------------
+
+import { useState, useEffect } from "react";
+
+export default function useFetch(url) {
+    
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(result => setData(result));
+  }, [url]);
+
+  return data;
 }
 
-const sumofCalculation = (num) => {
-   
-    for(let i=0; i<1000000000; i++)
-        num += 1 
 
+Use it inside a component
+--------------------------
 
-    return num
+function Users() {
+
+  const users = useFetch("https://jsonplaceholder.typicode.com/users");
+
+  if (!users) return <p>Loading...</p>;
+
+  return (
+    <ul>
+      {users.map(u => <li key={u.id}>{u.name}</li>)}
+    </ul>
+  );
 }
