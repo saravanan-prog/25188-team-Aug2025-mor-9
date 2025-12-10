@@ -1,62 +1,67 @@
-React UseRef
-=============
-      => useRef is a React hook that lets you store a value that does NOT cause the component to re-render when it changes.
+React Routing
+===============
 
-      => Think of it like a small box where you can put something and React will not refresh the UI when the value inside changes.
-      
-   When to use useRef?
-   -------------------
-      ✔️ 1. Accessing DOM elements
+      => React Router is a library that lets you create multiple pages in a React app using URL-based        navigation—without reloading the page.
 
-            Like getting a reference to an input box.
-      
-      2. Storing values that should NOT trigger re-render
+      => A way to switch between components using the browser URL.
 
-                  Like storing:
-                  previous values
-                  timers
-                  counters
-                  API call flags
+      Example
+      http://localhost:3000/home   => HomePage
+      http://localhost:3000/about => Aboutpage
+
+    Basic Installation
+    ------------------
+
+      npm install react-router-dom
 
 
 
-Simple Example 1: Access DOM element
-====================================
 
-import { useRef } from "react";
-
-function App() {
-  const inputRef = useRef(null);
-
-  function focusInput() {
-    inputRef.current.focus();
-  }
-
-  return (
-    <>
-      <input ref={inputRef} />
-      <button onClick={focusInput}>Focus Input</button>
-    </>
-  );
-}
+      |---------------------------------------------------------------------
+      | Component         | Meaning                                        |
+      | ----------------- | ---------------------------------------------- |
+      | **BrowserRouter** | Wraps your app and enables routing             |
+      | **Routes**        | Container for all routes                       |
+      | **Route**         | Defines a path (URL) and the component to show |
+      | **Link**          | Navigation without page reload                 |
+      | **useNavigate**   | Navigate using JavaScript (button click)       |
+      | **useParams**     | Reading URL parameters                         |
+      |--------------------------------------------------------------------|
 
 
-Simple Example 2: Value that does NOT re-render
--------------------------------------------------
 
-import { useRef } from "react";
 
-function App() {
-  const countRef = useRef(0);
 
-  function increase() {
-    countRef.current++;
-    console.log(countRef.current);
-  }
+      import { BrowserRouter, Routes, Route } from "react-router-dom";
+      import App from "./App";
+      import About from "./About";
+      import Contact from "./Contact";
+       import PageNotFound from "./PageNotFound";
 
-  return (
-    <button onClick={increase}>Click</button>
-  );
-}
+      export default function Main() {
+      return (
+            <BrowserRouter>
+                  <Routes>
+                        <Route path="/" element={<App />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<PageNotFound />} />       // Wild-card-Route
+                  </Routes>
+            </BrowserRouter>
+      );
+      }
 
-  
+
+
+      import { Link } from "react-router-dom";
+
+      function Navbar() {
+            return (
+                  <nav>
+                        <Link to="/">Home</Link>
+                        <Link to="/about">About</Link>
+                        <Link to="/contact">Contact</Link>
+                  </nav>
+            );
+      }
+

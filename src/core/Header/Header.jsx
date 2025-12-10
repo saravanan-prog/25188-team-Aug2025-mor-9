@@ -1,0 +1,30 @@
+import { Link } from "react-router-dom";
+
+export default function Header(){
+
+    return <div className = "base-container"> 
+            <nav className="navbar navbar-default">
+
+
+                <ul class="nav navbar-nav">
+                    <li> 
+                        <Link to = {"/home"}> Home </Link>
+                    </li>
+                     <li> 
+                        <Link to = {"/about"}> About </Link>
+                    </li>
+                    <li> 
+                        <Link to = {"/contact"}> Contact </Link>
+                    </li>
+                    <li> 
+                        <Link to = {"/blog"}> Blog </Link>
+                    </li>
+                </ul>
+
+
+            </nav>
+
+          
+
+      </div>
+}
