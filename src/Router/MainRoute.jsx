@@ -1,25 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../pages/home/HomePage";
-import AboutPage from "../pages/about/AboutPage";
-import ContactPage from "../pages/contact/ContactPage";
-import BlogPage from "../pages/blogs/BlogPage";
+
 import PageNotFound from "../core/Pagenofound/PageNotFound";
-import Header from "../core/Header/Header";
-import Footer from "../core/Footer/Footer";
+import CustomersList from "../pages/customers/CustomersList";
+import FullDetails from "../pages/customers/customer-full-detail/FullDetails";
 
 export default function MainRoute() {
   return (
     <div>
-      <Header />
+     
         <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route path="blog" element={<BlogPage />} />
+           
+            <Route index element = {<CustomersList />} />
+            <Route path="customers" element = {<CustomersList />} />
+             <Route path="customers/fulldetail/:id" element = {<FullDetails />} />
+            <Route path="customers/:id/:email" element = {<CustomersList />} />
             <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer />
+        
     </div>
   );
 }
