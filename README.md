@@ -64,7 +64,7 @@ export default User;
 useLocation() 
 =============
 
-      useLocation() returns a location object that contains information about the current URL
+    useLocation() returns a location object that contains information about the current URL
 
 
 Example : http://localhost:3000/productlist?productName=samsung&model=s27
@@ -76,15 +76,15 @@ Example : http://localhost:3000/productlist?productName=samsung&model=s27
 
             function MyComponent() {
 
-                  const {pathname,search } = useLocation();
+                  const { pathname,search } = useLocation();
                   
                   console.log("pathname=====>",pathname);  // e.g., "/productlist"
                   console.log("search=======>",search);   // e.g., "?productName=samsung&model=s27"
 
-                  onst params = new URLSearchParams(search);
-                  const productName = params.get("productName");
-                  const model = params.get("model");
-
+                  const params = new URLSearchParams(search);
+                  const productName = params.get("productName");  // samsung,
+                  const model = params.get("model");              // s27
+ 
                   return <div>
 
                         Current path: {pathname}
