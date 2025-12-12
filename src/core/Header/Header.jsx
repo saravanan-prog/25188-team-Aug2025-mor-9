@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Header(){
+     const isAuth = Boolean(localStorage.getItem("token"));
+     const navigate = useNavigate()
+     const {pathname} = useLocation()
+
+     console.log("pathname====>",pathname)
+
+      const handleLogout = () => {
+        
+        localStorage.removeItem("token")
+        navigate('/login')
+
+    }
 
     return <div className = "base-container"> 
             <nav className="navbar navbar-default">
@@ -18,6 +30,14 @@ export default function Header(){
                     </li>
                     <li> 
                         <Link to = {"/blog"}> Blog </Link>
+                    </li>
+                    <li>
+                        {!isAuth ?
+                           pathname !="/login" && <Link to = {"/login"}> Login </Link>
+                        :
+                            <button onClick = {handleLogout}> Logout</button>
+                         }
+                        
                     </li>
                 </ul>
 

@@ -1,9 +1,17 @@
 import axios from "axios";
+import { use, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login(){
 
     const navigate = useNavigate()
+
+    useEffect(()=>{
+         const isAuth = Boolean(localStorage.getItem("token"));
+         isAuth && navigate('/dashboard')
+         
+
+    },[])
 
 
     const handleLogin = async () => {
