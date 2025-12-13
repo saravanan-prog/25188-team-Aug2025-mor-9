@@ -1,70 +1,169 @@
-# Getting Started with Create React App
+React-Redux
+============
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    => When your app grows, passing state through many components (props drilling) gets messy.
 
-## Available Scripts
+    => Redux gives you a central store for app state, and React Redux connects that store to your React components.
 
-In the project directory, you can run:
+    => React Redux is a tool that helps you share data (state) between many React components easily.
 
-### `npm start`
+                    ┌─────────────┐
+                    │   UI Layer  │
+                    └─────▲───────┘
+                          │
+                    ┌─────┴───────┐
+                    │   Actions   │
+                    └─────▲───────┘
+                          │
+                    ┌─────┴───────┐
+                    │  Reducers   │
+                    └─────▲───────┘
+                          │
+                    ┌─────┴───────┐
+                    │    Store    │
+                    └─────────────┘
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    1. Install packages
+       ----------------
+        npm install @reduxjs/toolkit react-redux
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+    2. Create a Slice (counterSlice.js)
+       --------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+       import { createSlice } from "@reduxjs/toolkit";
 
-### Analyzing the Bundle Size
+        const counterSlice = createSlice({
+            name: "counter",
+            initialState: {
+                value: 0,
+            },
+            reducers: {
+                increment: state => {
+                    state.value += 1;   // allowed (Immer)
+                },
+                decrement: state => {
+                    state.value -= 1;
+                },
+                incrementByAmount: (state, action) => {
+                    state.value += action.payload;
+                },
+            },
+        });
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+        export const {
+            increment,
+            decrement,
+            incrementByAmount,
+        } = counterSlice.actions;
 
-### Making a Progressive Web App
+        export default counterSlice.reducer;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+    
+    3. Create Store (store.js)
+    --------------------------
+        import { configureStore } from "@reduxjs/toolkit";
+        import counterReducer from "./counterSlice";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+        export const store = configureStore({
+            reducer: {
+                counter: counterReducer,
+            },
+        });
+    
 
-### Deployment
+    4. Wrap App with Provider (main.jsx / index.js)
+    -----------------------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+        import { Provider } from "react-redux";
+        import { store } from "./store";
 
-### `npm run build` fails to minify
+            <Provider store={store}>
+                <App />
+            </Provider>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    
+    5. Use Redux in Component (Counter.jsx)
+    -----------------------------------------
+
+    import { useSelector, useDispatch } from "react-redux";
+    import {
+        increment,
+        decrement,
+        incrementByAmount,
+    } from "./counterSlice";
+
+    export default function Counter() {
+
+        const count = useSelector(state => state.counter.value);
+        const dispatch = useDispatch();
+
+        return (
+            <div>
+                <h2>Count: {count}</h2>
+
+                <button onClick={() => dispatch(increment())}>
+                    +
+                </button>
+
+                <button onClick={() => dispatch(decrement())}>
+                    -
+                </button>
+
+                <button onClick={() => dispatch(incrementByAmount(5))}>
+                    +5
+                </button>
+            </div>
+        );
+    }
+
+ 
+
+ Redux Diagram 
+ ==============
+        👤 User
+         |
+         | click / input
+         ▼
+   🖥 React Component
+      (useDispatch)
+         |
+         | dispatch(action)
+         ▼
+      📦 ACTION
+   ( what happened)
+         |
+         ▼
+    ⚙️ REDUCER
+   (update logic)
+         |
+         ▼
+    🏪 STORE
+  (global app state)
+         |
+         | useSelector()
+         ▼
+   🖥 React Component
+   (UI re-renders)
+
+
+
+
+
+
+
