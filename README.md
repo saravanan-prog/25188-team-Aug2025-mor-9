@@ -7,34 +7,7 @@ React-Redux
 
     => React Redux is a tool that helps you share data (state) between many React components easily.
 
-                    ┌─────────────┐
-                    │   UI Layer  │
-                    └─────▲───────┘
-                          │
-                    ┌─────┴───────┐
-                    │   Actions   │
-                    └─────▲───────┘
-                          │
-                    ┌─────┴───────┐
-                    │  Reducers   │
-                    └─────▲───────┘
-                          │
-                    ┌─────┴───────┐
-                    │    Store    │
-                    └─────────────┘
-
-
-
-
-
-
-
-
-
-
-
-
-
+                   
 
 
     1. Install packages
@@ -47,7 +20,7 @@ React-Redux
 
        import { createSlice } from "@reduxjs/toolkit";
 
-        const counterSlice = createSlice({
+       export const counterSlice = createSlice({
             name: "counter",
             initialState: {
                 value: 0,
@@ -126,7 +99,7 @@ React-Redux
                 </button>
 
                 <button onClick={() => dispatch(incrementByAmount(5))}>
-                    +5
+                    + 5
                 </button>
             </div>
         );
