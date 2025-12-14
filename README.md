@@ -1,142 +1,86 @@
-React-Redux
-============
+Redux Toolkit Thunk?
+====================
+    Redux Thunk is a middleware that allows you to write async logic (like API calls) inside Redux.
 
-    => When your app grows, passing state through many components (props drilling) gets messy.
+    Redux Toolkit (RTK) includes Redux Thunk by default, so you don’t need to install or configure it separately.
 
-    => Redux gives you a central store for app state, and React Redux connects that store to your React components.
-
-    => React Redux is a tool that helps you share data (state) between many React components easily.
-
-                   
-
-
-    1. Install packages
-       ----------------
-        npm install @reduxjs/toolkit react-redux
-
-
-    2. Create a Slice (counterSlice.js)
-       --------------------------------
-
-       import { createSlice } from "@reduxjs/toolkit";
-
-       export const counterSlice = createSlice({
-            name: "counter",
-            initialState: {
-                value: 0,
-            },
-            reducers: {
-                increment: state => {
-                    state.value += 1;   // allowed (Immer)
-                },
-                decrement: state => {
-                    state.value -= 1;
-                },
-                incrementByAmount: (state, action) => {
-                    state.value += action.payload;
-                },
-            },
-        });
-
-        export const {
-            increment,
-            decrement,
-            incrementByAmount,
-        } = counterSlice.actions;
-
-        export default counterSlice.reducer;
-
-
+    🔹 Lifecycle of createAsyncThunk
     
-    3. Create Store (store.js)
-    --------------------------
-        import { configureStore } from "@reduxjs/toolkit";
-        import counterReducer from "./counterSlice";
-
-        export const store = configureStore({
-            reducer: {
-                counter: counterReducer,
-            },
-        });
-    
-
-    4. Wrap App with Provider (main.jsx / index.js)
-    -----------------------------------------------
-
-        import { Provider } from "react-redux";
-        import { store } from "./store";
-
-            <Provider store={store}>
-                <App />
-            </Provider>
-
-    
-    5. Use Redux in Component (Counter.jsx)
-    -----------------------------------------
-
-    import { useSelector, useDispatch } from "react-redux";
-    import {
-        increment,
-        decrement,
-        incrementByAmount,
-    } from "./counterSlice";
-
-    export default function Counter() {
-
-        const count = useSelector(state => state.counter.value);
-        const dispatch = useDispatch();
-
-        return (
-            <div>
-                <h2>Count: {count}</h2>
-
-                <button onClick={() => dispatch(increment())}>
-                    +
-                </button>
-
-                <button onClick={() => dispatch(decrement())}>
-                    -
-                </button>
-
-                <button onClick={() => dispatch(incrementByAmount(5))}>
-                    + 5
-                </button>
-            </div>
-        );
-    }
-
- 
-
- Redux Diagram 
- ==============
-        👤 User
-         |
-         | click / input
-         ▼
-   🖥 React Component
-      (useDispatch)
-         |
-         | dispatch(action)
-         ▼
-      📦 ACTION
-   ( what happened)
-         |
-         ▼
-    ⚙️ REDUCER
-   (update logic)
-         |
-         ▼
-    🏪 STORE
-  (global app state)
-         |
-         | useSelector()
-         ▼
-   🖥 React Component
-   (UI re-renders)
+        -------------------------
+        | Stage   | Action Type |
+        | ------- | ----------- |
+        | Start   | `pending`   |
+        | Success | `fulfilled` |
+        | Failure | `rejected`  |
+        -------------------------
 
 
 
 
 
+Redux Toolkit Way: createAsyncThunk
+--------------------------------------
 
 
+1️⃣ Create Async Thunk
+    thunk.js
+    --------
+
+    import { createAsyncThunk } from '@reduxjs/toolkit';
+
+    export const fetchUsers = createAsyncThunk(
+    'users/fetchUsers',
+        async () => {
+            const response = await fetch('https://jsonplaceholder.typicode.com/users');
+            return response.json();
+        }
+    );
+
+
+2️⃣ Create Slice
+----------------
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchUsers } from './userThunk';
+
+const userSlice = createSlice({
+  name: 'users',
+  initialState: {
+    data: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUsers.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(fetchUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
+});
+
+export default userSlice.reducer;
+
+
+3️⃣ Dispatch Thunk in Component
+--------------------------------
+
+import { useDispatch } from 'react-redux';
+import { fetchUsers } from './userThunk';
+
+const Users = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  return <div>Users List</div>;
+};
