@@ -3,17 +3,23 @@ import { Link, useParams } from "react-router-dom"
 
 export default function CustomersList() {
 
+    
+
     const [userList,setUserlist] = useState()
 
     const {id} = useParams()
 
     useEffect(()=>{
+          
+
         
         console.log("id=======>",id)
         getuserListApi()
     },[id])
 
     const getuserListApi = async () => {
+       
+      
 
         let endpointURL  = id ? process.env.REACT_APP_USERSLIST+`/${id}` : process.env.REACT_APP_USERSLIST
         var response = await fetch(endpointURL)
@@ -21,6 +27,7 @@ export default function CustomersList() {
         responseData && setUserlist(responseData)
         
     }
+
 
 
 
@@ -60,3 +67,4 @@ export default function CustomersList() {
 
     </div>
 }
+
