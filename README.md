@@ -7,24 +7,8 @@ React-Redux
 
     => React Redux is a tool that helps you share data (state) between many React components easily.
 
-                    ┌─────────────┐
-                    │   UI Layer  │
-                    └─────▲───────┘
-                          │
-                    ┌─────┴───────┐
-                    │   Actions   │
-                    └─────▲───────┘
-                          │
-                    ┌─────┴───────┐
-                    │  Reducers   │
-                    └─────▲───────┘
-                          │
-                    ┌─────┴───────┐
-                    │    Store    │
-                    └─────────────┘
-
-
-
+            
+          
 
 
 
