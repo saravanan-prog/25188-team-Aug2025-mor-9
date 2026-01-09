@@ -15,11 +15,18 @@ export default function Login(){
 
 
     const handleLogin = async () => {
-      let payload = { username: "johnd", password: "m38rmF$" };
-      let response = await axios.post("https://fakestoreapi.com/auth/login",payload)
-      let token = response?.data?.token && response?.data?.token
-      token && localStorage.setItem("token",token)
-      navigate('/dashboard')
+      try{
+        let payload = { username: "johnd", password: "m38rmF$" };
+        let response = await axios.post("https://fakestoreapi.com/auth/login",payload)
+        console.log("response=======>",response)
+        let token = response?.data?.token && response?.data?.token
+        token && localStorage.setItem("token",token)
+        navigate('/dashboard')
+      }
+      catch(error){
+        console.error("error====>",error.message)
+      }
+      
 
     };
 
